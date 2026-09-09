@@ -24,6 +24,12 @@
   <main class="page">
     <p class="app-label">Daily Verse</p>
 
+    <div class="testament-select" role="group" aria-label="Choose testament">
+      <button class="testament-btn active" data-testament="ALL" aria-pressed="true">Whole Bible</button>
+      <button class="testament-btn" data-testament="OT" aria-pressed="false">Old Testament</button>
+      <button class="testament-btn" data-testament="NT" aria-pressed="false">New Testament</button>
+    </div>
+
     <section class="verse-card" id="verseCard" aria-live="polite">
       <p class="verse-state" id="verseState">Finding a verse for you…</p>
 

@@ -1,31 +1,10 @@
 // -----------------------------------------------------------------------
-// A small curated list of references to pick randomly from.
-// bible-api.com doesn't have a built-in "random verse" endpoint, so we
-// keep a list here and fetch whichever one gets picked.
-// Feel free to add more references to this list later.
+// Which testament to sample from. bible-api.com's random endpoint takes
+// an optional "OT" or "NT" path segment; omitting it samples the whole
+// Bible. This means we can ask for the right testament directly instead
+// of fetching randomly and rejecting wrong results.
 // -----------------------------------------------------------------------
-const VERSE_REFERENCES = [
-  "John 3:16",
-  "Psalm 23:1",
-  "Philippians 4:6-7",
-  "Proverbs 3:5-6",
-  "Romans 8:28",
-  "Isaiah 41:10",
-  "Joshua 1:9",
-  "Matthew 6:33",
-  "Psalm 46:1",
-  "Jeremiah 29:11",
-  "2 Corinthians 5:17",
-  "Galatians 5:22-23",
-  "1 Corinthians 13:4-7",
-  "Psalm 119:105",
-  "Colossians 3:23",
-  "Ecclesiastes 3:1",
-  "James 1:2-3",
-  "Micah 6:8",
-  "Psalm 34:18",
-  "Matthew 11:28"
-];
+let selectedTestament = "ALL"; // "ALL" | "OT" | "NT"
 
 const verseState = document.getElementById("verseState");
 const verseText = document.getElementById("verseText");
@@ -33,20 +12,37 @@ const verseRef = document.getElementById("verseRef");
 const commentarySection = document.getElementById("commentarySection");
 const commentaryText = document.getElementById("commentaryText");
 const newVerseBtn = document.getElementById("newVerseBtn");
+const testamentButtons = document.querySelectorAll(".testament-btn");
+
+testamentButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.dataset.testament === selectedTestament) return;
+
+    selectedTestament = btn.dataset.testament;
+    testamentButtons.forEach((b) => {
+      const isActive = b === btn;
+      b.classList.toggle("active", isActive);
+      b.setAttribute("aria-pressed", String(isActive));
+    });
+
+    loadNewVerse();
+  });
+});
 
 async function fetchRandomVerse() {
-  const reference = VERSE_REFERENCES[Math.floor(Math.random() * VERSE_REFERENCES.length)];
-  const url = `https://bible-api.com/${encodeURIComponent(reference)}`;
+  const base = "https://bible-api.com/data/web/random";
+  const url = selectedTestament === "ALL" ? base : `${base}/${selectedTestament}`;
 
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to fetch verse (status ${response.status})`);
   }
   const data = await response.json();
+  const v = data.random_verse;
 
   return {
-    text: data.text.trim(),
-    reference: data.reference
+    text: v.text.trim(),
+    reference: `${v.book} ${v.chapter}:${v.verse}`
   };
 }
 

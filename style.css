@@ -46,6 +46,44 @@ body {
   margin: 0 0 40px;
 }
 
+/* Testament selector */
+.testament-select {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.testament-btn {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.testament-btn:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+
+.testament-btn.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.testament-btn.active:hover {
+  background: var(--color-accent);
+  opacity: 0.92;
+}
+
 /* Verse block */
 .verse-card {
   width: 100%;
