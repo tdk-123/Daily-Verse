@@ -1,0 +1,148 @@
+:root {
+  --color-bg: #EFEAE0;
+  --color-surface: #F8F5EE;
+  --color-ink: #23241F;
+  --color-muted: #6B6B62;
+  --color-accent: #3F5D53;
+  --color-accent-soft: #DCE6DF;
+  --color-rule: #C9C2B2;
+
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: "Work Sans", -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
+
+body {
+  font-family: var(--font-sans);
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.page {
+  width: 100%;
+  max-width: 560px;
+  padding: 48px 0 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-label {
+  font-size: 14px;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+  margin: 0 0 40px;
+}
+
+/* Verse block */
+.verse-card {
+  width: 100%;
+  padding: 36px 0;
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.verse-state {
+  font-family: var(--font-sans);
+  color: var(--color-muted);
+  font-size: 15px;
+  margin: 0;
+}
+
+.verse-text {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 5vw, 26px);
+  line-height: 1.55;
+  font-weight: 400;
+  margin: 0;
+  max-width: 62ch;
+}
+
+.verse-ref {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+/* Commentary block */
+.commentary {
+  width: 100%;
+  margin-top: 32px;
+  text-align: left;
+}
+
+.commentary-label {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin: 0 0 8px;
+}
+
+.commentary-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-ink);
+  margin: 0;
+  max-width: 68ch;
+}
+
+/* Button */
+.new-verse-btn {
+  margin-top: 40px;
+  padding: 12px 28px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-surface);
+  background: var(--color-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.new-verse-btn:hover {
+  opacity: 0.88;
+}
+
+.new-verse-btn:active {
+  opacity: 0.75;
+}
+
+.new-verse-btn:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.new-verse-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-verse-btn {
+    transition: none;
+  }
+}
