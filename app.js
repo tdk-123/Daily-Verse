@@ -164,11 +164,11 @@ function buildCommentaryPrompt(verse) {
     );
   }
   return (
-    `You are providing brief, neutral, historical/literary context for a ` +
-    `bible verse — not a devotional or theological interpretation. In 2-3 ` +
-    `sentences, explain the context (who wrote it, to whom, and/or the ` +
-    `situation it addresses). Be factual and even-handed; don't favor any ` +
-    `particular denomination's reading.\n\n` +
+    `You are providing brief explanation of the context for a ` +
+    `bible verse — not a theological or scientific interpretation. In 1-2 ` +
+    `sentences, explain what this chapter is about ` +
+    `and then in 1-2 sentences what this verse particularly says in that context. ` +
+    `Be factual and even-handed.\n\n` +
     `Reference: ${verse.reference}\n` +
     `Text: "${verse.text}"\n\n` +
     `Respond in English.`
