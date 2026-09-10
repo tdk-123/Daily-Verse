@@ -24,10 +24,31 @@
   <main class="page">
     <p class="app-label">Daily Verse</p>
 
-    <div class="testament-select" role="group" aria-label="Choose testament">
-      <button class="testament-btn active" data-testament="ALL" aria-pressed="true">Whole Bible</button>
-      <button class="testament-btn" data-testament="OT" aria-pressed="false">Old Testament</button>
-      <button class="testament-btn" data-testament="NT" aria-pressed="false">New Testament</button>
+    <div class="controls">
+      <div class="control-group">
+        <p class="control-label">Testament</p>
+        <div class="btn-row" role="group" aria-label="Choose testament">
+          <button class="pill-btn active" data-group="testament" data-value="ALL" aria-pressed="true">Whole Bible</button>
+          <button class="pill-btn" data-group="testament" data-value="OT" aria-pressed="false">Old Testament</button>
+          <button class="pill-btn" data-group="testament" data-value="NT" aria-pressed="false">New Testament</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <p class="control-label">Language</p>
+        <div class="btn-row" role="group" aria-label="Choose language">
+          <button class="pill-btn active" data-group="language" data-value="EN" aria-pressed="true">English</button>
+          <button class="pill-btn" data-group="language" data-value="NL" aria-pressed="false">Nederlands</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <p class="control-label">Version</p>
+        <div class="btn-row" role="group" aria-label="Choose translation age">
+          <button class="pill-btn" data-group="version" data-value="OLD" aria-pressed="false">Old</button>
+          <button class="pill-btn active" data-group="version" data-value="MODERN" aria-pressed="true">Modern</button>
+        </div>
+      </div>
     </div>
 
     <section class="verse-card" id="verseCard" aria-live="polite">
@@ -35,6 +56,7 @@
 
       <blockquote class="verse-text" id="verseText" hidden></blockquote>
       <p class="verse-ref" id="verseRef" hidden></p>
+      <p class="translation-label" id="translationLabel" hidden></p>
     </section>
 
     <section class="commentary" id="commentarySection" hidden>
