@@ -3,7 +3,7 @@
 // Example: "https://bible-app-proxy.yourname.workers.dev"
 // -----------------------------------------------------------------------
 const CONFIG = {
-  AI_PROXY_URL: "PASTE_YOUR_WORKER_URL_HERE",
+  AI_PROXY_URL: "https://bible-app-proxy.tdekoning88.workers.dev/",
 };
 
 // -----------------------------------------------------------------------
@@ -153,11 +153,11 @@ async function callAIProxy(prompt) {
 function buildCommentaryPrompt(verse) {
   if (state.language === "NL") {
     return (
-      `Je geeft een korte, neutrale, historische/literaire duiding bij een ` +
-      `bijbeltekst — geen devotionele of theologische interpretatie. Leg in ` +
-      `2-3 zinnen de context uit (wie de schrijver was, aan wie het gericht ` +
-      `was, en/of de situatie die aan de orde is). Wees feitelijk en ` +
-      `evenwichtig; bevoordeel geen specifieke denominatie.\n\n` +
+      `Je geeft een korte weergave van de context van deze ` +
+      `bijbeltekst — geen theologische of wetenschappelijke interpretatie. Leg in ` +
+      `1-2 zinnen uit waar het hoofdstuk over gaat, ` +
+      `en dan 1-2 zinnen over wat de dit vers daarin betekent. Wees feitelijk en ` +
+      `evenwichtig.\n\n` +
       `Referentie: ${verse.reference}\n` +
       `Tekst: "${verse.text}"\n\n` +
       `Antwoord in het Nederlands.`
