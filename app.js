@@ -3,7 +3,7 @@
 // Example: "https://bible-app-proxy.yourname.workers.dev"
 // -----------------------------------------------------------------------
 const CONFIG = {
-  AI_PROXY_URL: "https://bible-app-proxy.tdekoning88.workers.dev/",
+  AI_PROXY_URL: "PASTE_YOUR_WORKER_URL_HERE",
 };
 
 // -----------------------------------------------------------------------
@@ -83,16 +83,18 @@ async function fetchFromBibleApi(reference, translationId) {
   return data.text.trim();
 }
 
-// Step 2b: fetch the same reference in Statenvertaling from dailybible.ca.
-// Note: this is a small hobby API distinct from bible-api.com. If it's ever
-// down, or its CORS settings block browser requests, this will throw and
-// the app will show the "couldn't load" message — that's expected fallback
-// behavior, not a bug to chase.
-async function fetchFromDailyBible(reference, translationId) {
-  const url = `https://dailybible.ca/api/${encodeURIComponent(reference)}?translation=${translationId}`;
-  const response = await fetch(url);
+// Step 2b: fetch the same reference in Statenvertaling. Routed through our
+// own Cloudflare Worker (not called directly from the browser) because
+// dailybible.ca doesn't appear to allow cross-origin browser requests —
+// the Worker fetches it server-to-server instead, sidestepping that.
+async function fetchFromDailyBible(reference) {
+  const response = await fetch(CONFIG.AI_PROXY_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "statenvertaling", reference }),
+  });
   if (!response.ok) {
-    throw new Error(`dailybible.ca fetch failed (status ${response.status})`);
+    throw new Error(`Statenvertaling proxy fetch failed (status ${response.status})`);
   }
   const data = await response.json();
   return data.text.trim();
@@ -122,7 +124,7 @@ async function resolveVerseText(reference, englishModernText) {
     return { text, label: "King James Version" };
   }
   if (state.language === "NL" && state.version === "OLD") {
-    const text = await fetchFromDailyBible(reference, "statenvertaling");
+    const text = await fetchFromDailyBible(reference);
     return { text, label: "Statenvertaling" };
   }
   // NL + MODERN
@@ -148,17 +150,33 @@ async function callAIProxy(prompt) {
   return data.text.trim();
 }
 
-async function generateCommentary(verse) {
-  const prompt =
+function buildCommentaryPrompt(verse) {
+  if (state.language === "NL") {
+    return (
+      `Je geeft een korte, neutrale, historische/literaire duiding bij een ` +
+      `bijbeltekst — geen devotionele of theologische interpretatie. Leg in ` +
+      `2-3 zinnen de context uit (wie de schrijver was, aan wie het gericht ` +
+      `was, en/of de situatie die aan de orde is). Wees feitelijk en ` +
+      `evenwichtig; bevoordeel geen specifieke denominatie.\n\n` +
+      `Referentie: ${verse.reference}\n` +
+      `Tekst: "${verse.text}"\n\n` +
+      `Antwoord in het Nederlands.`
+    );
+  }
+  return (
     `You are providing brief, neutral, historical/literary context for a ` +
     `bible verse — not a devotional or theological interpretation. In 2-3 ` +
     `sentences, explain the context (who wrote it, to whom, and/or the ` +
     `situation it addresses). Be factual and even-handed; don't favor any ` +
     `particular denomination's reading.\n\n` +
     `Reference: ${verse.reference}\n` +
-    `Text: "${verse.text}"`;
+    `Text: "${verse.text}"\n\n` +
+    `Respond in English.`
+  );
+}
 
-  return callAIProxy(prompt);
+async function generateCommentary(verse) {
+  return callAIProxy(buildCommentaryPrompt(verse));
 }
 
 async function loadNewVerse() {
