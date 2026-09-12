@@ -3,7 +3,7 @@
 // Example: "https://bible-app-proxy.yourname.workers.dev"
 // -----------------------------------------------------------------------
 const CONFIG = {
-  AI_PROXY_URL: "https://bible-app-proxy.tdekoning88.workers.dev",
+  AI_PROXY_URL: "PASTE_YOUR_WORKER_URL_HERE",
 };
 
 // -----------------------------------------------------------------------
@@ -98,27 +98,25 @@ async function fetchFromBibleApi(reference, translationId) {
   return data.text.trim();
 }
 
-// Step 2b: ask Gemini to find the authentic Statenvertaling (1637) text for
-// this reference, using its Google Search grounding tool so it's actually
-// looking this up rather than purely recalling from memory. Points it at
-// statenvertaling.net specifically, with an explicit "best effort" fallback
-// if a search doesn't turn up a clean match — accuracy will be very good
-// but isn't guaranteed word-for-word.
+// Step 2b: ask Gemini to recall the Statenvertaling (1637) text for this
+// reference from its own training knowledge. Not using the Google Search
+// grounding tool here — that has a separate, much stricter quota than plain
+// generation, and hitting it repeatedly caused quota errors. Plain recall
+// is good enough for this use case (won't be 100% guaranteed word-for-word,
+// but should be close for well-known verses).
 function buildStatenvertalingPrompt(reference) {
   return (
-    `Search the web — preferably statenvertaling.net — for the exact ` +
-    `wording of this bible verse in the historic Dutch "Statenvertaling" ` +
-    `(States Translation, 1637). Return ONLY the verse text itself, in ` +
-    `Dutch: no explanation, no repeated reference, no quotation marks, no ` +
-    `verse number prefix. If you can't find a clean source for it, give ` +
-    `your best-known rendering of this verse in the Statenvertaling, ` +
-    `staying as close as you can to the authentic 1637 wording.\n\n` +
-    `Reference: ${reference}`
+    `Geef de tekst van dit bijbelvers in de historische Nederlandse ` +
+    `"Statenvertaling" (Statenbijbel, 1637), zo accuraat mogelijk naar ` +
+    `jouw eigen kennis. Geef ALLEEN de verstekst zelf in het Nederlands — ` +
+    `geen uitleg, geen herhaling van de referentie, geen aanhalingstekens, ` +
+    `geen versnummer.\n\n` +
+    `Referentie: ${reference}`
   );
 }
 
 async function fetchStatenvertaling(reference) {
-  return withRetry(() => callAIProxy(buildStatenvertalingPrompt(reference), { useSearch: true }));
+  return withRetry(() => callAIProxy(buildStatenvertalingPrompt(reference)));
 }
 
 // Step 2c: ask Gemini (via our own proxy) to render the English text in

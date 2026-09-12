@@ -78,14 +78,12 @@ async function callGemini(prompt, useSearch = false) {
 
 function buildStatenvertalingPrompt(reference) {
   return (
-    `Search the web — preferably statenvertaling.net — for the exact ` +
-    `wording of this bible verse in the historic Dutch "Statenvertaling" ` +
-    `(States Translation, 1637). Return ONLY the verse text itself, in ` +
-    `Dutch: no explanation, no repeated reference, no quotation marks, no ` +
-    `verse number prefix. If you can't find a clean source for it, give ` +
-    `your best-known rendering of this verse in the Statenvertaling, ` +
-    `staying as close as you can to the authentic 1637 wording.\n\n` +
-    `Reference: ${reference}`
+    `Geef de tekst van dit bijbelvers in de historische Nederlandse ` +
+    `"Statenvertaling" (Statenbijbel, 1637), zo accuraat mogelijk naar ` +
+    `jouw eigen kennis. Geef ALLEEN de verstekst zelf in het Nederlands — ` +
+    `geen uitleg, geen herhaling van de referentie, geen aanhalingstekens, ` +
+    `geen versnummer.\n\n` +
+    `Referentie: ${reference}`
   );
 }
 
@@ -135,7 +133,7 @@ async function buildEntry(language, version) {
     text = await withRetry(() => fetchFromBibleApi(reference, "kjv"));
     translationLabel = "King James Version";
   } else if (language === "NL" && version === "OLD") {
-    text = await withRetry(() => callGemini(buildStatenvertalingPrompt(reference), true));
+    text = await withRetry(() => callGemini(buildStatenvertalingPrompt(reference)));
     translationLabel = "Statenvertaling";
   } else {
     text = await withRetry(() => callGemini(buildTranslatePrompt(englishModernText)));
@@ -179,9 +177,11 @@ async function main() {
   }
 
   const pool = { ...existing.entries };
+  const summary = [];
 
   for (const combo of COMBOS) {
     const { key, entries } = await buildPoolForCombo(combo.language, combo.version);
+    summary.push(`${key}: ${entries.length}/${POOL_SIZE_PER_COMBO} built`);
     if (entries.length > 0) {
       pool[key] = entries;
     } else {
@@ -192,6 +192,12 @@ async function main() {
   const output = { generatedAt: new Date().toISOString(), entries: pool };
   fs.mkdirSync("data", { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
+
+  // Printed unconditionally, right at the end, so a scan of the log
+  // (even a collapsed/successful run) immediately shows whether anything
+  // actually got built this time.
+  console.log("=== SUMMARY ===");
+  summary.forEach((line) => console.log(line));
   console.log(`Wrote ${OUTPUT_PATH}`);
 }
 
