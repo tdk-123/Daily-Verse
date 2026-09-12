@@ -9,7 +9,7 @@
 // do this for every update -- network-first already keeps things current --
 // but it's a good "just in case" reset if something ever seems stuck.
 
-const CACHE_NAME = "daily-verse-v4";
+const CACHE_NAME = "daily-verse-v5";
 const APP_SHELL = [
   "./",
   "./index.html",

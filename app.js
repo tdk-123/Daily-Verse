@@ -7,25 +7,116 @@ const CONFIG = {
 };
 
 // -----------------------------------------------------------------------
-// Selection state. Three independent choices combine into one of four
-// text sources:
+// Selection state.
+//
+// Testament: two independent toggles. Both on = whole Bible, exactly one
+// on = that testament only, both off is invalid (checked before fetching).
+//
+// Version: exactly one of OLD/MODERN is active at a time (enforced by the
+// button click handler itself, see below).
+//
+// Language: EN/NL, switched via the flag buttons, also exactly one active.
+//
+// These three combine into one of four text sources:
 //   EN + MODERN -> World English Bible, straight from bible-api.com
 //   EN + OLD    -> King James Version, from bible-api.com
-//   NL + OLD    -> Statenvertaling, looked up by Gemini using Google Search
-//                  grounding (see fetchStatenvertaling below)
+//   NL + OLD    -> Statenvertaling, recalled by Gemini
 //   NL + MODERN -> WEB text translated into modern Dutch by Gemini
-//
-// The approach for all four: first get a random reference (book/chapter/
-// verse) from bible-api.com honoring the testament filter, then resolve
-// the actual displayed text for that same reference from whichever
-// source the language+version combo points to.
 // -----------------------------------------------------------------------
 const state = {
-  testament: "ALL", // "ALL" | "OT" | "NT"
+  testamentOT: true,
+  testamentNT: true,
   language: "EN", // "EN" | "NL"
   version: "MODERN", // "OLD" | "MODERN"
 };
 
+// -----------------------------------------------------------------------
+// UI text in both languages. Only the static interface labels live here —
+// the verse text and commentary come from the actual data sources.
+// -----------------------------------------------------------------------
+const STRINGS = {
+  EN: {
+    appLabel: "Daily Verse",
+    testamentLabel: "Testament",
+    oldTestament: "Old Testament",
+    newTestament: "New Testament",
+    versionLabel: "Version",
+    old: "Old",
+    modern: "Modern",
+    randomVerseBtn: "Give me a random verse",
+    findingVerse: "Finding a verse for you…",
+    loadingContext: "Loading context…",
+    couldntLoad: "Couldn't load a verse. Check your connection and try again.",
+    selectTestamentError: "Please select at least one testament (Old or New).",
+    selectVersionError: "Please select a translation version (Old or Modern).",
+    contextLabel: "Context",
+    initialPrompt: "Choose your options, then tap the button above.",
+  },
+  NL: {
+    appLabel: "Dagelijks Vers",
+    testamentLabel: "Testament",
+    oldTestament: "Oude Testament",
+    newTestament: "Nieuwe Testament",
+    versionLabel: "Vertaling",
+    old: "Oud",
+    modern: "Modern",
+    randomVerseBtn: "Geef me een willekeurig vers",
+    findingVerse: "Een vers zoeken voor je…",
+    loadingContext: "Context laden…",
+    couldntLoad: "Kon geen vers laden. Controleer je verbinding en probeer opnieuw.",
+    selectTestamentError: "Selecteer minstens één testament (Oud of Nieuw).",
+    selectVersionError: "Selecteer een vertaalversie (Oud of Modern).",
+    contextLabel: "Context",
+    initialPrompt: "Kies je opties en tik daarna op de knop hierboven.",
+  },
+};
+
+// Standard English -> Dutch bible book names, for displaying the reference
+// when the Dutch flag is active. Fetching from bible-api.com etc. always
+// uses the English name internally (that's what those APIs expect) — this
+// table is purely for what gets shown on screen.
+const BOOK_NAMES_NL = {
+  "Genesis": "Genesis", "Exodus": "Exodus", "Leviticus": "Leviticus",
+  "Numbers": "Numeri", "Deuteronomy": "Deuteronomium", "Joshua": "Jozua",
+  "Judges": "Rechters", "Ruth": "Ruth", "1 Samuel": "1 Samuel",
+  "2 Samuel": "2 Samuel", "1 Kings": "1 Koningen", "2 Kings": "2 Koningen",
+  "1 Chronicles": "1 Kronieken", "2 Chronicles": "2 Kronieken", "Ezra": "Ezra",
+  "Nehemiah": "Nehemia", "Esther": "Esther", "Job": "Job", "Psalms": "Psalmen",
+  "Proverbs": "Spreuken", "Ecclesiastes": "Prediker", "Song of Solomon": "Hooglied",
+  "Isaiah": "Jesaja", "Jeremiah": "Jeremia", "Lamentations": "Klaagliederen",
+  "Ezekiel": "Ezechiël", "Daniel": "Daniël", "Hosea": "Hosea", "Joel": "Joël",
+  "Amos": "Amos", "Obadiah": "Obadja", "Jonah": "Jona", "Micah": "Micha",
+  "Nahum": "Nahum", "Habakkuk": "Habakuk", "Zephaniah": "Sefanja",
+  "Haggai": "Haggaï", "Zechariah": "Zacharia", "Malachi": "Maleachi",
+  "Matthew": "Mattheüs", "Mark": "Marcus", "Luke": "Lucas", "John": "Johannes",
+  "Acts": "Handelingen", "Romans": "Romeinen", "1 Corinthians": "1 Korinthiërs",
+  "2 Corinthians": "2 Korinthiërs", "Galatians": "Galaten", "Ephesians": "Efeziërs",
+  "Philippians": "Filippenzen", "Colossians": "Kolossenzen",
+  "1 Thessalonians": "1 Thessalonicenzen", "2 Thessalonians": "2 Thessalonicenzen",
+  "1 Timothy": "1 Timotheüs", "2 Timothy": "2 Timotheüs", "Titus": "Titus",
+  "Philemon": "Filemon", "Hebrews": "Hebreeën", "James": "Jakobus",
+  "1 Peter": "1 Petrus", "2 Peter": "2 Petrus", "1 John": "1 Johannes",
+  "2 John": "2 Johannes", "3 John": "3 Johannes", "Jude": "Judas",
+  "Revelation": "Openbaring",
+};
+
+function translateReferenceForDisplay(reference) {
+  if (state.language !== "NL") return reference;
+  const lastSpace = reference.lastIndexOf(" ");
+  const book = reference.slice(0, lastSpace);
+  const chapterVerse = reference.slice(lastSpace + 1);
+  const translatedBook = BOOK_NAMES_NL[book] || book;
+  return `${translatedBook} ${chapterVerse}`;
+}
+
+// -----------------------------------------------------------------------
+// DOM references
+// -----------------------------------------------------------------------
+const appLabelEl = document.getElementById("appLabel");
+const testamentLabelEl = document.getElementById("testamentLabel");
+const versionLabelEl = document.getElementById("versionLabel");
+const commentaryLabelEl = document.getElementById("commentaryLabel");
+const selectionError = document.getElementById("selectionError");
 const verseState = document.getElementById("verseState");
 const verseText = document.getElementById("verseText");
 const verseRef = document.getElementById("verseRef");
@@ -33,24 +124,87 @@ const translationLabel = document.getElementById("translationLabel");
 const commentarySection = document.getElementById("commentarySection");
 const commentaryText = document.getElementById("commentaryText");
 const newVerseBtn = document.getElementById("newVerseBtn");
-const pillButtons = document.querySelectorAll(".pill-btn");
 
-pillButtons.forEach((btn) => {
+const testamentButtons = document.querySelectorAll("[data-testament]");
+const versionButtons = document.querySelectorAll("[data-version]");
+const flagButtons = document.querySelectorAll("[data-language]");
+
+// -----------------------------------------------------------------------
+// Selection controls. Note none of these fetch a verse themselves — they
+// only update `state`. Fetching only happens when the button is pressed.
+// -----------------------------------------------------------------------
+testamentButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const group = btn.dataset.group;
-    const value = btn.dataset.value;
-    if (state[group] === value) return;
+    const key = btn.dataset.testament; // "OT" | "NT"
+    if (key === "OT") state.testamentOT = !state.testamentOT;
+    else state.testamentNT = !state.testamentNT;
+    btn.classList.toggle("active");
+    btn.setAttribute("aria-pressed", btn.classList.contains("active") ? "true" : "false");
+  });
+});
 
-    state[group] = value;
-    document.querySelectorAll(`.pill-btn[data-group="${group}"]`).forEach((b) => {
+versionButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    state.version = btn.dataset.version;
+    versionButtons.forEach((b) => {
       const isActive = b === btn;
       b.classList.toggle("active", isActive);
       b.setAttribute("aria-pressed", String(isActive));
     });
-
-    loadNewVerse();
   });
 });
+
+flagButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (state.language === btn.dataset.language) return;
+    state.language = btn.dataset.language;
+    flagButtons.forEach((b) => {
+      const isActive = b === btn;
+      b.classList.toggle("active", isActive);
+      b.setAttribute("aria-pressed", String(isActive));
+    });
+    renderStaticText();
+  });
+});
+
+// Updates all fixed interface labels to the current language. Doesn't
+// touch verse/commentary content (that's real fetched data, not UI chrome)
+// except for re-showing the initial prompt or an error message, if that's
+// what's currently on screen.
+function renderStaticText() {
+  const s = STRINGS[state.language];
+  appLabelEl.textContent = s.appLabel;
+  testamentLabelEl.textContent = s.testamentLabel;
+  versionLabelEl.textContent = s.versionLabel;
+  commentaryLabelEl.textContent = s.contextLabel;
+  newVerseBtn.textContent = s.randomVerseBtn;
+
+  document.querySelector('[data-testament="OT"]').textContent = s.oldTestament;
+  document.querySelector('[data-testament="NT"]').textContent = s.newTestament;
+  document.querySelector('[data-version="OLD"]').textContent = s.old;
+  document.querySelector('[data-version="MODERN"]').textContent = s.modern;
+
+  // Only refresh verseState's text if it's the placeholder/error being
+  // shown right now — never overwrite it mid-fetch or after a real verse.
+  if (!verseState.hidden) {
+    verseState.textContent = verseState.dataset.kind === "error" ? s.couldntLoad : s.initialPrompt;
+  }
+}
+
+function getEffectiveTestament() {
+  if (state.testamentOT && state.testamentNT) return "ALL";
+  if (state.testamentOT) return "OT";
+  if (state.testamentNT) return "NT";
+  return null; // invalid: neither selected
+}
+
+function validateSelection() {
+  const s = STRINGS[state.language];
+  const errors = [];
+  if (getEffectiveTestament() === null) errors.push(s.selectTestamentError);
+  if (state.version !== "OLD" && state.version !== "MODERN") errors.push(s.selectVersionError);
+  return errors;
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -70,9 +224,9 @@ async function withRetry(fn, retries = 1, delayMs = 600) {
 // Step 1: always get a random reference (+ its modern English text) from
 // bible-api.com, honoring the testament filter.
 // -----------------------------------------------------------------------
-async function fetchRandomReference() {
+async function fetchRandomReference(testament) {
   const base = "https://bible-api.com/data/web/random";
-  const url = state.testament === "ALL" ? base : `${base}/${state.testament}`;
+  const url = testament === "ALL" ? base : `${base}/${testament}`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -224,8 +378,8 @@ async function loadPool() {
   }
 }
 
-function takeFromPool() {
-  if (state.testament !== "ALL") return null;
+function takeFromPool(testament) {
+  if (testament !== "ALL") return null;
   const key = `${state.language}_${state.version}`;
   const entries = pool[key];
   if (!entries || entries.length === 0) return null;
@@ -234,7 +388,7 @@ function takeFromPool() {
 
 function showVerse(verse, label) {
   verseText.textContent = `"${verse.text}"`;
-  verseRef.textContent = verse.reference;
+  verseRef.textContent = translateReferenceForDisplay(verse.reference);
   translationLabel.textContent = label;
   verseState.hidden = true;
   verseText.hidden = false;
@@ -244,7 +398,8 @@ function showVerse(verse, label) {
 
 function showError() {
   verseState.hidden = false;
-  verseState.textContent = "Couldn't load a verse. Check your connection and try again.";
+  verseState.dataset.kind = "error";
+  verseState.textContent = STRINGS[state.language].couldntLoad;
   verseText.hidden = true;
   verseRef.hidden = true;
   translationLabel.hidden = true;
@@ -252,6 +407,11 @@ function showError() {
 }
 
 async function loadNewVerse() {
+  const testament = getEffectiveTestament();
+  // Should never be null here since the button handler validates first,
+  // but guard anyway in case this is ever called from elsewhere.
+  if (testament === null) return;
+
   newVerseBtn.disabled = true;
 
   verseText.hidden = true;
@@ -259,10 +419,11 @@ async function loadNewVerse() {
   translationLabel.hidden = true;
   commentarySection.hidden = true;
   verseState.hidden = false;
-  verseState.textContent = "Finding a verse for you…";
+  verseState.dataset.kind = "loading";
+  verseState.textContent = STRINGS[state.language].findingVerse;
 
   // Fast path: an already-generated entry sitting in the pool.
-  const pooled = takeFromPool();
+  const pooled = takeFromPool(testament);
   if (pooled) {
     showVerse({ reference: pooled.reference, text: pooled.text }, pooled.translationLabel);
     commentaryText.textContent = pooled.commentary;
@@ -273,13 +434,13 @@ async function loadNewVerse() {
 
   // Fallback: fetch and generate live, same as before.
   try {
-    const { reference, englishModernText } = await fetchRandomReference();
+    const { reference, englishModernText } = await fetchRandomReference(testament);
     const { text, label } = await resolveVerseText(reference, englishModernText);
     const verse = { reference, text };
 
     showVerse(verse, label);
 
-    commentaryText.textContent = "Loading context…";
+    commentaryText.textContent = STRINGS[state.language].loadingContext;
     commentarySection.hidden = false;
 
     const commentary = await generateCommentary(verse);
@@ -292,11 +453,22 @@ async function loadNewVerse() {
   }
 }
 
-newVerseBtn.addEventListener("click", loadNewVerse);
+newVerseBtn.addEventListener("click", () => {
+  const errors = validateSelection();
+  if (errors.length > 0) {
+    selectionError.textContent = errors.join(" ");
+    selectionError.hidden = false;
+    return;
+  }
+  selectionError.hidden = true;
+  loadNewVerse();
+});
 
-// Load the pregenerated pool first, then show a verse — either straight
-// from the pool (instant) or via the live fallback.
-loadPool().then(loadNewVerse);
+// Load the pregenerated pool in the background so it's ready the moment
+// the button is pressed. Doesn't show anything on its own — the app waits
+// for a deliberate tap on "Give me a random verse".
+verseState.dataset.kind = "initial";
+loadPool();
 
 // Register the service worker so the app can be added to the home screen
 // and load a little faster on repeat visits.

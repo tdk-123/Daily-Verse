@@ -6,6 +6,7 @@
   --color-accent: #3F5D53;
   --color-accent-soft: #DCE6DF;
   --color-rule: #C9C2B2;
+  --color-error: #A6473A;
 
   --font-serif: "Source Serif 4", Georgia, serif;
   --font-sans: "Work Sans", -apple-system, sans-serif;
@@ -33,17 +34,51 @@ body {
 .page {
   width: 100%;
   max-width: 560px;
-  padding: 48px 0 64px;
+  padding: 32px 0 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .app-label {
   font-size: 14px;
   color: var(--color-muted);
   letter-spacing: 0.02em;
-  margin: 0 0 40px;
+  margin: 0;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 6px;
+}
+
+.flag-btn {
+  font-size: 18px;
+  line-height: 1;
+  padding: 6px 9px;
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.flag-btn:hover {
+  opacity: 0.75;
+}
+
+.flag-btn.active {
+  opacity: 1;
+  border-color: var(--color-accent);
 }
 
 /* Selector controls */
@@ -102,6 +137,15 @@ body {
 .pill-btn.active:hover {
   background: var(--color-accent);
   opacity: 0.92;
+}
+
+.selection-error {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-error);
+  text-align: center;
+  margin: 0 0 16px;
+  max-width: 40ch;
 }
 
 /* Verse block */
@@ -174,7 +218,7 @@ body {
 
 /* Button */
 .new-verse-btn {
-  margin-top: 40px;
+  margin-bottom: 40px;
   padding: 12px 28px;
   font-family: var(--font-sans);
   font-size: 15px;
