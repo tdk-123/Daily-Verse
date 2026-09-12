@@ -14,7 +14,7 @@
 import fs from "fs";
 
 const POOL_SIZE_PER_COMBO = 3;
-const GEMINI_MODEL = "gemini-2.5-flash";
+const GEMINI_MODEL = "gemini-3.5-flash-lite";
 const OUTPUT_PATH = "data/pool.json";
 
 const COMBOS = [
