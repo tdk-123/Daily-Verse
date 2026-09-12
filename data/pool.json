@@ -1,65 +1,84 @@
 {
-  "generatedAt": "2026-09-12T14:26:46.652Z",
+  "generatedAt": "2026-09-12T14:50:15.459Z",
   "entries": {
     "EN_MODERN": [
       {
-        "reference": "Daniel 11:12",
-        "text": "The multitude will be lifted up, and his heart will be exalted. He will cast down tens of thousands, but he won’t prevail.",
+        "reference": "Numbers 7:8",
+        "text": "and he gave four wagons and eight oxen to the sons of Merari, according to their service, under the direction of Ithamar the son of Aaron the priest.",
         "translationLabel": "World English Bible",
-        "commentary": "Daniel 11 presents a detailed, sweeping prophecy concerning the conflicts between the \"King of the North\" and the \"King of the South,\" referring to the Seleucid and Ptolemaic dynasties that succeeded Alexander the Great. This specific verse describes a military engagement in which the King of the South (Egypt) achieves a victory over the King of the North (Syria), resulting in heavy casualties, yet fails to capitalize on the success to gain long-term dominance."
+        "commentary": "Numbers chapter 7 details the offerings made by the leaders of Israel during the dedication of the Tabernacle, including the distribution of carts and oxen to the Levitical clans to transport the sacred structures. In this specific verse, Moses allocates four wagons and eight oxen to the Merarites, who were responsible for hauling the heavy structural elements of the Tabernacle under the supervision of Ithamar, the son of Aaron."
       },
       {
-        "reference": "Nehemiah 9:34",
-        "text": "Also our kings, our princes, our priests, and our fathers have not kept your law, nor listened to your commandments and your testimonies with which you testified against them.",
+        "reference": "Ezekiel 33:17",
+        "text": "“‘Yet the children of your people say, “The way of the Lord is not fair;” but as for them, their way is not fair.",
         "translationLabel": "World English Bible",
-        "commentary": "Nehemiah chapter 9 records a national gathering of the Israelites in Jerusalem where the people fast, wear sackcloth, and confess their sins and the sins of their ancestors. In the context of this communal prayer of repentance, the verse explicitly acknowledges that the nation's leaders, ancestors, and people as a whole bore responsibility for repeatedly failing to follow Mosaic law."
+        "commentary": "Chapter 33 of Ezekiel details the prophet's responsibility as a watchman for the house of Israel, focusing on personal accountability and individual moral responsibility before God. Within this context, the verse addresses the complaints of the Israelite exiles who perceived divine justice as unjust, countering that it is actually their own conduct that is skewed."
       },
       {
-        "reference": "Proverbs 16:30",
-        "text": "One who winks his eyes to plot perversities,\none who compresses his lips, is bent on evil.",
+        "reference": "Hebrews 9:9",
+        "text": "which is a symbol of the present age, where gifts and sacrifices are offered that are incapable, concerning the conscience, of making the worshiper perfect;",
         "translationLabel": "World English Bible",
-        "commentary": "Proverbs 16 is part of a collection of Solomonic proverbs that contrasts righteous behavior, wisdom, and humility with wickedness, foolishness, and pride. Within this context, the verse describes specific non-verbal physical gestures—winking and compressing the lips—as outward signs of someone secretly scheming malicious actions."
+        "commentary": "Hebrews chapter 9 outlines the rituals and furnishings of the earthly Jewish tabernacle, contrasting them with the superior, heavenly ministry of Jesus Christ. Within this context, the verse explains that the sacrificial system of the old covenant was only symbolic and outward, unable to achieve inner spiritual cleansing or perfection for the worshiper."
       }
     ],
     "EN_OLD": [
       {
-        "reference": "1 Chronicles 5:23",
-        "text": "And the children of the half tribe of Manasseh dwelt in the land: they increased from Bashan unto Baal-hermon and Senir, and unto mount Hermon.",
+        "reference": "Ezekiel 48:14",
+        "text": "And they shall not sell of it, neither exchange, nor alienate the firstfruits of the land: for\nit is holy unto the LORD.",
         "translationLabel": "King James Version",
-        "commentary": "This chapter provides genealogical records and historical summaries of the Israelite tribes located east of the Jordan River, detailing their tribal boundaries, leaders, and eventual displacement due to alliances with foreign nations. In this specific context, the verse notes the geographic expansion and settlement of the eastern half-tribe of Manasseh in the region stretching from Bashan to Mount Hermon."
+        "commentary": "Chapter 48 of Ezekiel concludes the prophet's visionary description of the restored land of Israel, detailing the specific tribal allotments, the layout of the holy district, and the dimensions of the new Jerusalem. Within this framework, this verse explicitly prohibits the Levites from selling, trading, or transferring any portion of their sacred land allotment, designating it as permanently consecrated to the Lord."
       },
       {
-        "reference": "Isaiah 14:9",
-        "text": "Hell from beneath is moved for thee to meet\nthee at thy coming: it stirreth up the dead for thee,\neven all the chief ones of the earth; it hath raised up from their thrones all the kings of the nations.",
+        "reference": "Hebrews 13:18",
+        "text": "Pray for us: for we trust we have a good conscience, in all things willing to live honestly.",
         "translationLabel": "King James Version",
-        "commentary": "Isaiah 14 is a prophetic passage that mocks the downfall of the king of Babylon, using poetic imagery to describe the reversal of fortunes and the eventual death of a once-powerful tyrant. In this context, verse 9 vividly depicts the underworld waking up to welcome the fallen Babylonian king, with former rulers rising from their thrones to witness his arrival and humbling."
+        "commentary": "Hebrews 13 concludes an anonymous pastoral letter to early Jewish-Christian believers by offering practical ethical exhortations, final greetings, and personal appeals from the author. Within this closing section of moral instruction and fellowship, the author asks the readers for their prayers, affirming his integrity and consistent desire to live honorably among them."
       },
       {
-        "reference": "Psalms 34:3",
-        "text": "O magnify the LORD with me, and let us exalt his name together.",
+        "reference": "Acts 7:43",
+        "text": "Yea, ye took up the tabernacle of Moloch, and the star of your god Remphan, figures which ye made to worship them: and I will carry you away beyond Babylon.",
         "translationLabel": "King James Version",
-        "commentary": "Psalm 34 is an acrostic poem presented as a thanksgiving hymn, traditionally attributed to David after he feigned madness before King Abimelech to escape danger. In this verse, the speaker calls upon others to join in a collective act of praising and honoring God."
+        "commentary": "**Context:**\nThis chapter recounts Stephen's speech before the Jewish council, in which he summarizes Israelite history from Abraham to Solomon to defend himself against charges of speaking against the Temple and the Law. He highlights a recurring pattern of Israelites rebelling against God's messengers.\n\n**Verse:**\nWithin this historical review, Stephen quotes the Book of Amos to accuse past generations of idolatry—specifically worshiping foreign deities like Moloch and Remphan during their time in the wilderness. He uses this example to argue that the Israelites consistently turned away from God, culminating in the divine punishment of exile."
       }
     ],
-    "NL_OLD": [],
+    "NL_OLD": [
+      {
+        "reference": "Judges 6:33",
+        "text": "En al de Midianieten, en Amalekieten, en de kinderen des oostens, vergaderden zich ganselijk, en togen over, en legerden zich in het dal van Jizreël.",
+        "translationLabel": "Statenvertaling",
+        "commentary": "In Richteren 6 trekken vijandige volken (Midianieten en Amalekieten) herhaaldelijk het land van Israël binnen om de oogst en het vee te vernietigen, waarna de Israëlieten God om hulp roepen en Richter Gideon wordt opgeroepen om hen te bevrijden. \n\nDit vers beschrijft de feitelijke samenkomst van deze vijandige legers in het dal van Jizreël ter voorbereiding op een nieuwe plundertocht tegen Israël."
+      },
+      {
+        "reference": "Hebrews 12:28",
+        "text": "Daarom, een onbewegelijk Koninkrijk ontvangende, behouden wij de genade, door welke wij God welbehagelijk dienen mogen, met eerbied en vreeze.",
+        "translationLabel": "Statenvertaling",
+        "commentary": "In Hebreeën 12 worden christenen aangespoord standvastig te blijven in hun geloof, in het vooruitzicht van een onwankelbaar hemels koninkrijk in tegenstelling tot aardse onzekerheid. Dit vers concludeert dat gelovigen dankbaar moeten zijn voor deze ontvangst en God daarom moeten dienen met gepast ontzag en eerbied."
+      },
+      {
+        "reference": "Acts 16:23",
+        "text": "En als zij haar vele slagen hadden opgelegd, wierpen zij haar in de gevangenis, en geboden den stokbewaarder haar zekerlijk te bewaren;",
+        "translationLabel": "Statenvertaling",
+        "commentary": "Handelingen hoofdstuk 16 beschrijft de reizen van de apostel Paulus en zijn metgezellen in Macedonië, waar ze in Filippi arriveren, een demonisch meisje bevrijden en vervolgens op last van de magistraten worden gegeseld en vastgezet. In dit specifieke vers wordt feitelijk beschreven hoe Paulus en Silas na hun aanhouding zwaar worden mishandeld en op bevel van de magistrate in de gevangenis worden opgesloten met de instructie om hen streng te bewaken."
+      }
+    ],
     "NL_MODERN": [
       {
-        "reference": "Isaiah 41:15",
-        "text": "Luister, Ik maak van jou een gloednieuw dorssnoer, scherp en voorzien van tanden. Daarmee zul je bergen dorsen en ze fijnmaken, en heuvels veranderen in kaf dat door de wind wordt weggewaaid.",
+        "reference": "1 Kings 18:14",
+        "text": "En nu zegt u: „Ga maar naar uw heer en zeg: ‘Elia is hier!’” Dan zal hij me doden.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "In Jesaja 41 spreekt God de profeet aan en bemoedigt Hij het volk Israël, dat zich in een kwetsbare en angstige positie bevindt in ballingschap, door hen te verzekeren van Zijn bescherming en hulp. Dit specifieke vers gebruikt de metafoor van een landbouwwerktuig om te illustreren dat Israël, ondanks hun zwakte, door God de kracht zal krijgen om obstakels en vijanden te overwinnen."
+        "commentary": "In 1 Koningen 18 bevindt zich de profeet Elia in een conflict met de Israëlische koning Achab en diens godsdienstbeleid, tegen de achtergrond van een langdurige droogte. In dit vers spreekt Elia de koninklijke hofmeester Obadja aan, waarbij hij zijn vrees uitspreekt dat het doorgeven van zijn verblijfplaats zal leiden tot zijn executie door de koning."
       },
       {
-        "reference": "Psalms 44:12",
-        "text": "U verkoopt uw volk voor een lofprijs, u wordt er met de verkoop geen spat beter van.",
+        "reference": "Psalms 73:25",
+        "text": "Wie heb ik in de hemel behalve U?\nNiemand op aarde verlang ik soen dan U.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "Psalm 44 is een klaaglied waarin het volk Israël God aanspreekt op een periode van diepe nationale nood en nederlaag in de strijd, ondanks hun eigen trouw aan het verbond. In dit specifieke vers verwijt de dichter God dat Hij zijn volk als het ware waardeloos heeft weggegeven aan vijanden, zonder dat dit God zelf ook maar iets heeft opgeleverd."
+        "commentary": "Psalm 73 is een klaag- en wijsheidslied waarin de dichter worstelt met het schijnbaar onrecht dat slechte mensen voorspoed hebben, terwijl vrome mensen juist lijden. Het hoofdstuk beschrijft zijn innerlijke crisis en de uiteindelijke omslag naar het besef dat verbondenheid met God het hoogste goed is.\n\nIn dit specifieke vers verwoordt de dichter de conclusie van die innerlijke zoektocht: God is voor hem de enige ware bron van betekenis en vervulling, zowel in de hemel als op aarde."
       },
       {
-        "reference": "Nehemiah 6:19",
-        "text": "Daarnaast prezen ze zijn goede daden in mijn waarneemhorst en vertelden ze hem alles wat ik zei. Toen stuurde Tobia brieven om me angst aan te jagen.",
+        "reference": "Colossians 3:14",
+        "text": "Draag bovenal de liefde, die de volmaakte eenheid is.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "Nehemia 6 beschrijft de laatste fase van de herbouw van de stadsmuren van Jeruzalem, waarbij de Joodse leider Nehemia herhaaldelijk wordt bedreigd en tegengewerkt door buitenlandse tegenstanders die het werk willen dwarsbomen. \n\nDit vers illustreert de psychologische druk en spionage waarmee Nehemia te maken had binnen zijn eigen kring, doordat bondgenoten van de vijand zijn daden bespraken en Tobia hem probeerde te intimideren met dreigbrieven."
+        "commentary": "In de brief aan de Kolossenzen geeft de apostel Paulus praktische aanwijzingen aan de vroege christelijke gemeenschap over hoe zij als herboren mensen met elkaar moeten omgaan. Het derde hoofdstuk roept op tot het afleggen van oudeondeugden en het aannemen van christelijke deugden zoals mededogen, nederigheid en vergevingsgezindheid.\n\nBinnen dit hoofdstuk fungeert dit vers als de samenvatting en de ultieme bindende factor voor al deze sociale en morele gedragsregels. De liefde wordt hier gepresenteerd als de belangrijkste eigenschap die de gemeenschap bijeenhoudt en tot een harmonieus geheel maakt."
       }
     ]
   }
