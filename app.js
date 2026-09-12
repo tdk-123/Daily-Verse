@@ -3,7 +3,7 @@
 // Example: "https://bible-app-proxy.yourname.workers.dev"
 // -----------------------------------------------------------------------
 const CONFIG = {
-  AI_PROXY_URL: "PASTE_YOUR_WORKER_URL_HERE",
+  AI_PROXY_URL: "https://bible-app-proxy.tdekoning88.workers.dev",
 };
 
 // -----------------------------------------------------------------------
