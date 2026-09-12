@@ -9,13 +9,14 @@
 // do this for every update -- network-first already keeps things current --
 // but it's a good "just in case" reset if something ever seems stuck.
 
-const CACHE_NAME = "daily-verse-v2";
+const CACHE_NAME = "daily-verse-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
   "./manifest.json",
+  "./data/pool.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
@@ -49,7 +50,6 @@ self.addEventListener("fetch", (event) => {
   // Never cache external API calls -- always go straight to the network.
   const isExternalApi =
     url.hostname.includes("bible-api.com") ||
-    url.hostname.includes("dailybible.ca") ||
     url.hostname.includes("workers.dev");
   if (isExternalApi) {
     return;

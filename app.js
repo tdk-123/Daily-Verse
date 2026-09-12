@@ -3,7 +3,7 @@
 // Example: "https://bible-app-proxy.yourname.workers.dev"
 // -----------------------------------------------------------------------
 const CONFIG = {
-  AI_PROXY_URL: "https://bible-app-proxy.tdekoning88.workers.dev/",
+  AI_PROXY_URL: "bible-app-proxy.tdekoning88.workers.dev",
 };
 
 // -----------------------------------------------------------------------
@@ -11,7 +11,8 @@ const CONFIG = {
 // text sources:
 //   EN + MODERN -> World English Bible, straight from bible-api.com
 //   EN + OLD    -> King James Version, from bible-api.com
-//   NL + OLD    -> Statenvertaling, from dailybible.ca
+//   NL + OLD    -> Statenvertaling, looked up by Gemini using Google Search
+//                  grounding (see fetchStatenvertaling below)
 //   NL + MODERN -> WEB text translated into modern Dutch by Gemini
 //
 // The approach for all four: first get a random reference (book/chapter/
@@ -51,6 +52,20 @@ pillButtons.forEach((btn) => {
   });
 });
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function withRetry(fn, retries = 1, delayMs = 600) {
+  try {
+    return await fn();
+  } catch (err) {
+    if (retries <= 0) throw err;
+    await sleep(delayMs);
+    return withRetry(fn, retries - 1, delayMs);
+  }
+}
+
 // -----------------------------------------------------------------------
 // Step 1: always get a random reference (+ its modern English text) from
 // bible-api.com, honoring the testament filter.
@@ -83,21 +98,27 @@ async function fetchFromBibleApi(reference, translationId) {
   return data.text.trim();
 }
 
-// Step 2b: fetch the same reference in Statenvertaling. Routed through our
-// own Cloudflare Worker (not called directly from the browser) because
-// dailybible.ca doesn't appear to allow cross-origin browser requests —
-// the Worker fetches it server-to-server instead, sidestepping that.
-async function fetchFromDailyBible(reference) {
-  const response = await fetch(CONFIG.AI_PROXY_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ action: "statenvertaling", reference }),
-  });
-  if (!response.ok) {
-    throw new Error(`Statenvertaling proxy fetch failed (status ${response.status})`);
-  }
-  const data = await response.json();
-  return data.text.trim();
+// Step 2b: ask Gemini to find the authentic Statenvertaling (1637) text for
+// this reference, using its Google Search grounding tool so it's actually
+// looking this up rather than purely recalling from memory. Points it at
+// statenvertaling.net specifically, with an explicit "best effort" fallback
+// if a search doesn't turn up a clean match — accuracy will be very good
+// but isn't guaranteed word-for-word.
+function buildStatenvertalingPrompt(reference) {
+  return (
+    `Search the web — preferably statenvertaling.net — for the exact ` +
+    `wording of this bible verse in the historic Dutch "Statenvertaling" ` +
+    `(States Translation, 1637). Return ONLY the verse text itself, in ` +
+    `Dutch: no explanation, no repeated reference, no quotation marks, no ` +
+    `verse number prefix. If you can't find a clean source for it, give ` +
+    `your best-known rendering of this verse in the Statenvertaling, ` +
+    `staying as close as you can to the authentic 1637 wording.\n\n` +
+    `Reference: ${reference}`
+  );
+}
+
+async function fetchStatenvertaling(reference) {
+  return withRetry(() => callAIProxy(buildStatenvertalingPrompt(reference), { useSearch: true }));
 }
 
 // Step 2c: ask Gemini (via our own proxy) to render the English text in
@@ -124,7 +145,7 @@ async function resolveVerseText(reference, englishModernText) {
     return { text, label: "King James Version" };
   }
   if (state.language === "NL" && state.version === "OLD") {
-    const text = await fetchFromDailyBible(reference);
+    const text = await fetchStatenvertaling(reference);
     return { text, label: "Statenvertaling" };
   }
   // NL + MODERN
@@ -137,11 +158,11 @@ async function resolveVerseText(reference, englishModernText) {
 // Gemini API key server-side. Used for both the Dutch translation above
 // and the commentary below.
 // -----------------------------------------------------------------------
-async function callAIProxy(prompt) {
+async function callAIProxy(prompt, options = {}) {
   const response = await fetch(CONFIG.AI_PROXY_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt }),
+    body: JSON.stringify({ prompt, useSearch: !!options.useSearch }),
   });
   if (!response.ok) {
     throw new Error(`AI proxy error (status ${response.status})`);
@@ -179,6 +200,59 @@ async function generateCommentary(verse) {
   return callAIProxy(buildCommentaryPrompt(verse));
 }
 
+// -----------------------------------------------------------------------
+// Pre-generated pool: a small set of ready-to-show verse+commentary
+// entries, built ahead of time by a GitHub Actions workflow (see
+// scripts/generate-pool.js) and committed to data/pool.json. Serving from
+// this pool is instant — no network calls at click time.
+//
+// The pool only covers language+version (not testament), so it's used
+// when the testament filter is "Whole Bible". Picking a specific
+// testament, or running out of pool entries for the current combo, falls
+// back to the live fetch path below.
+// -----------------------------------------------------------------------
+let pool = { EN_MODERN: [], EN_OLD: [], NL_OLD: [], NL_MODERN: [] };
+
+async function loadPool() {
+  try {
+    const response = await fetch("./data/pool.json", { cache: "no-store" });
+    if (!response.ok) return;
+    const data = await response.json();
+    if (data && data.entries) {
+      pool = data.entries;
+    }
+  } catch (err) {
+    console.warn("Couldn't load pregenerated pool, will fetch live instead.", err);
+  }
+}
+
+function takeFromPool() {
+  if (state.testament !== "ALL") return null;
+  const key = `${state.language}_${state.version}`;
+  const entries = pool[key];
+  if (!entries || entries.length === 0) return null;
+  return entries.shift();
+}
+
+function showVerse(verse, label) {
+  verseText.textContent = `"${verse.text}"`;
+  verseRef.textContent = verse.reference;
+  translationLabel.textContent = label;
+  verseState.hidden = true;
+  verseText.hidden = false;
+  verseRef.hidden = false;
+  translationLabel.hidden = false;
+}
+
+function showError() {
+  verseState.hidden = false;
+  verseState.textContent = "Couldn't load a verse. Check your connection and try again.";
+  verseText.hidden = true;
+  verseRef.hidden = true;
+  translationLabel.hidden = true;
+  commentarySection.hidden = true;
+}
+
 async function loadNewVerse() {
   newVerseBtn.disabled = true;
 
@@ -189,18 +263,23 @@ async function loadNewVerse() {
   verseState.hidden = false;
   verseState.textContent = "Finding a verse for you…";
 
+  // Fast path: an already-generated entry sitting in the pool.
+  const pooled = takeFromPool();
+  if (pooled) {
+    showVerse({ reference: pooled.reference, text: pooled.text }, pooled.translationLabel);
+    commentaryText.textContent = pooled.commentary;
+    commentarySection.hidden = false;
+    newVerseBtn.disabled = false;
+    return;
+  }
+
+  // Fallback: fetch and generate live, same as before.
   try {
     const { reference, englishModernText } = await fetchRandomReference();
     const { text, label } = await resolveVerseText(reference, englishModernText);
     const verse = { reference, text };
 
-    verseText.textContent = `"${verse.text}"`;
-    verseRef.textContent = verse.reference;
-    translationLabel.textContent = label;
-    verseState.hidden = true;
-    verseText.hidden = false;
-    verseRef.hidden = false;
-    translationLabel.hidden = false;
+    showVerse(verse, label);
 
     commentaryText.textContent = "Loading context…";
     commentarySection.hidden = false;
@@ -209,12 +288,7 @@ async function loadNewVerse() {
     commentaryText.textContent = commentary;
   } catch (err) {
     console.error(err);
-    verseState.hidden = false;
-    verseState.textContent = "Couldn't load a verse. Check your connection and try again.";
-    verseText.hidden = true;
-    verseRef.hidden = true;
-    translationLabel.hidden = true;
-    commentarySection.hidden = true;
+    showError();
   } finally {
     newVerseBtn.disabled = false;
   }
@@ -222,8 +296,9 @@ async function loadNewVerse() {
 
 newVerseBtn.addEventListener("click", loadNewVerse);
 
-// Load a verse as soon as the app opens
-loadNewVerse();
+// Load the pregenerated pool first, then show a verse — either straight
+// from the pool (instant) or via the live fallback.
+loadPool().then(loadNewVerse);
 
 // Register the service worker so the app can be added to the home screen
 // and load a little faster on repeat visits.
