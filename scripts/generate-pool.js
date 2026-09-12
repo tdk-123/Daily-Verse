@@ -102,22 +102,22 @@ function buildTranslatePrompt(englishText) {
 function buildCommentaryPrompt(language, reference, text) {
   if (language === "NL") {
     return (
-      `Je geeft een korte, neutrale, historische/literaire duiding bij een ` +
-      `bijbeltekst — geen devotionele of theologische interpretatie. Leg in ` +
-      `2-3 zinnen de context uit (wie de schrijver was, aan wie het gericht ` +
-      `was, en/of de situatie die aan de orde is). Wees feitelijk en ` +
-      `evenwichtig; bevoordeel geen specifieke denominatie.\n\n` +
+      `Je geeft een korte weergave van de context van deze ` +
+      `bijbeltekst — geen theologische of wetenschappelijke interpretatie. Leg in ` +
+      `1-2 zinnen uit waar het hoofdstuk over gaat, ` +
+      `en dan 1-2 zinnen over wat de dit vers daarin betekent. Wees feitelijk en ` +
+      `evenwichtig.\n\n` +
       `Referentie: ${reference}\n` +
       `Tekst: "${text}"\n\n` +
       `Antwoord in het Nederlands.`
     );
   }
   return (
-    `You are providing brief, neutral, historical/literary context for a ` +
-    `bible verse — not a devotional or theological interpretation. In 2-3 ` +
-    `sentences, explain the context (who wrote it, to whom, and/or the ` +
-    `situation it addresses). Be factual and even-handed; don't favor any ` +
-    `particular denomination's reading.\n\n` +
+    `You are providing brief explanation of the context for a ` +
+    `bible verse — not a theological or scientific interpretation. In 1-2 ` +
+    `sentences, explain what this chapter is about ` +
+    `and then in 1-2 sentences what this verse particularly says in that context. ` +
+    `Be factual and even-handed.\n\n` +
     `Reference: ${reference}\n` +
     `Text: "${text}"\n\n` +
     `Respond in English.`
