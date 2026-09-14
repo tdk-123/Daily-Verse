@@ -17,6 +17,14 @@ const POOL_SIZE_PER_COMBO = 3;
 const GEMINI_MODEL = "gemini-3.5-flash-lite";
 const OUTPUT_PATH = "data/pool.json";
 
+// A full refresh makes ~18 Gemini calls (statenvertaling/translation +
+// commentary, across 4 combos x 3 entries), which was enough to trip the
+// free tier's requests-per-minute limit when fired back to back. Pausing
+// after every call keeps us comfortably under that. Bump this up if you
+// still see quota errors; a smaller number speeds up the workflow but
+// risks hitting the limit again.
+const GEMINI_CALL_DELAY_MS = 4500;
+
 const COMBOS = [
   { language: "EN", version: "MODERN" },
   { language: "EN", version: "OLD" },
@@ -73,7 +81,15 @@ async function callGemini(prompt, useSearch = false) {
   });
   if (!res.ok) throw new Error(`Gemini call failed (${res.status}): ${await res.text()}`);
   const data = await res.json();
-  return (data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "").trim();
+  const text = (data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "").trim();
+
+  // Pace ourselves so a full run of many calls doesn't burst past the
+  // free tier's requests-per-minute limit. This runs in GitHub Actions
+  // with nobody waiting on it, so a few extra seconds per call costs
+  // nothing in practice.
+  await sleep(GEMINI_CALL_DELAY_MS);
+
+  return text;
 }
 
 function buildStatenvertalingPrompt(reference) {
