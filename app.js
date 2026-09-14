@@ -358,12 +358,56 @@ async function generateCommentary(verse) {
 // scripts/generate-pool.js) and committed to data/pool.json. Serving from
 // this pool is instant — no network calls at click time.
 //
-// The pool only covers language+version (not testament), so it's used
-// when the testament filter is "Whole Bible". Picking a specific
-// testament, or running out of pool entries for the current combo, falls
-// back to the live fetch path below.
+// Testament matching: each pool entry only knows its language+version
+// combo, not testament, so we derive that from the book name on the fly
+// (see OT_BOOKS below) and scan for the first entry that matches whatever
+// testament is currently selected. If none match, or the combo's list is
+// empty, we fall back to the live fetch path below.
+//
+// "Already seen" memory: this device remembers (via localStorage) which
+// pool entries it's already been shown, and skips them on future opens —
+// so re-opening the app doesn't just show you the same top-of-pool verse
+// again. This is per-device, not shared across everyone using the app;
+// once GitHub Actions refreshes the pool (new generatedAt), the memory
+// resets since it's genuinely a new batch.
 // -----------------------------------------------------------------------
+const OT_BOOKS = new Set([
+  "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges",
+  "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings", "1 Chronicles",
+  "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms", "Proverbs",
+  "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
+  "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah",
+  "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi",
+]);
+
+function getTestamentForReference(reference) {
+  const lastSpace = reference.lastIndexOf(" ");
+  const book = reference.slice(0, lastSpace);
+  return OT_BOOKS.has(book) ? "OT" : "NT";
+}
+
+const SEEN_STORAGE_KEY = "dailyVerseSeenPool";
+
+function loadSeenState() {
+  try {
+    const raw = localStorage.getItem(SEEN_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : { generatedAt: null, seen: [] };
+  } catch {
+    return { generatedAt: null, seen: [] };
+  }
+}
+
+function saveSeenState() {
+  try {
+    localStorage.setItem(SEEN_STORAGE_KEY, JSON.stringify(seenState));
+  } catch {
+    // Private browsing or storage disabled — degrade gracefully, we just
+    // won't remember across sessions this time.
+  }
+}
+
 let pool = { EN_MODERN: [], EN_OLD: [], NL_OLD: [], NL_MODERN: [] };
+let seenState = loadSeenState();
 
 async function loadPool() {
   try {
@@ -373,17 +417,34 @@ async function loadPool() {
     if (data && data.entries) {
       pool = data.entries;
     }
+    if (data && data.generatedAt && data.generatedAt !== seenState.generatedAt) {
+      // Genuinely new batch from GitHub -> this device hasn't seen any of it yet.
+      seenState = { generatedAt: data.generatedAt, seen: [] };
+      saveSeenState();
+    }
   } catch (err) {
     console.warn("Couldn't load pregenerated pool, will fetch live instead.", err);
   }
 }
 
 function takeFromPool(testament) {
-  if (testament !== "ALL") return null;
   const key = `${state.language}_${state.version}`;
   const entries = pool[key];
   if (!entries || entries.length === 0) return null;
-  return entries.shift();
+
+  for (let i = 0; i < entries.length; i++) {
+    const entry = entries[i];
+    const id = `${key}:${entry.reference}`;
+    if (seenState.seen.includes(id)) continue;
+    if (testament !== "ALL" && getTestamentForReference(entry.reference) !== testament) continue;
+
+    entries.splice(i, 1); // don't offer it again this session
+    seenState.seen.push(id); // or in a future session, until the pool refreshes
+    saveSeenState();
+    return entry;
+  }
+
+  return null; // nothing usable left for this combo/testament -> live fetch
 }
 
 function showVerse(verse, label) {
