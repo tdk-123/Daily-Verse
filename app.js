@@ -301,7 +301,7 @@ async function resolveVerseText(reference, englishModernText) {
   }
   // NL + MODERN
   const text = await translateToModernDutch(englishModernText);
-  return { text, label: "Hedendaagse vertaling (AI-vertaald)" };
+  return { text, label: "Hedendaagse vertaling" };
 }
 
 // -----------------------------------------------------------------------
