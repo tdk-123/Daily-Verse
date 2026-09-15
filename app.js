@@ -259,9 +259,9 @@ async function fetchFromBibleApi(reference, translationId) {
 // but should be close for well-known verses).
 function buildStatenvertalingPrompt(reference) {
   return (
-    `Geef de tekst van dit bijbelvers in de historische Nederlandse ` +
-    `"Statenvertaling" (Statenbijbel, 1637), zo accuraat mogelijk naar ` +
-    `jouw eigen kennis. Geef ALLEEN de verstekst zelf in het Nederlands — ` +
+    `Geef de tekst van dit bijbelvers in de Nederlandse ` +
+    `Statenvertaling, doe een online zoekopdracht om de exacte tekst ` +
+    `te achterhalen. Geef ALLEEN de verstekst zelf in het Nederlands — ` +
     `geen uitleg, geen herhaling van de referentie, geen aanhalingstekens, ` +
     `geen versnummer.\n\n` +
     `Referentie: ${reference}`
