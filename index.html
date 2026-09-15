@@ -32,16 +32,22 @@
       </div>
     </div>
 
-    <div class="controls">
-      <div class="control-group">
+    <div class="selection-row">
+      <div class="testament-column">
         <p class="control-label" id="testamentLabel">Testament</p>
-        <div class="btn-row" role="group" aria-label="Choose testament">
-          <button class="pill-btn active" data-testament="OT" aria-pressed="true">Old Testament</button>
-          <button class="pill-btn active" data-testament="NT" aria-pressed="true">New Testament</button>
-        </div>
+        <label class="checkbox-row">
+          <input type="checkbox" class="checkbox-input" data-testament="OT" checked />
+          <span class="checkbox-box"></span>
+          <span class="checkbox-text" id="testamentOTLabel">Old Testament</span>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" class="checkbox-input" data-testament="NT" checked />
+          <span class="checkbox-box"></span>
+          <span class="checkbox-text" id="testamentNTLabel">New Testament</span>
+        </label>
       </div>
 
-      <div class="control-group">
+      <div class="version-column">
         <p class="control-label" id="versionLabel">Version</p>
         <div class="btn-row" role="group" aria-label="Choose translation age">
           <button class="pill-btn" data-version="OLD" aria-pressed="false">Old</button>

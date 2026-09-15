@@ -125,7 +125,9 @@ const commentarySection = document.getElementById("commentarySection");
 const commentaryText = document.getElementById("commentaryText");
 const newVerseBtn = document.getElementById("newVerseBtn");
 
-const testamentButtons = document.querySelectorAll("[data-testament]");
+const testamentCheckboxes = document.querySelectorAll("input[data-testament]");
+const testamentOTLabelEl = document.getElementById("testamentOTLabel");
+const testamentNTLabelEl = document.getElementById("testamentNTLabel");
 const versionButtons = document.querySelectorAll("[data-version]");
 const flagButtons = document.querySelectorAll("[data-language]");
 
@@ -133,13 +135,10 @@ const flagButtons = document.querySelectorAll("[data-language]");
 // Selection controls. Note none of these fetch a verse themselves — they
 // only update `state`. Fetching only happens when the button is pressed.
 // -----------------------------------------------------------------------
-testamentButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const key = btn.dataset.testament; // "OT" | "NT"
-    if (key === "OT") state.testamentOT = !state.testamentOT;
-    else state.testamentNT = !state.testamentNT;
-    btn.classList.toggle("active");
-    btn.setAttribute("aria-pressed", btn.classList.contains("active") ? "true" : "false");
+testamentCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", () => {
+    if (checkbox.dataset.testament === "OT") state.testamentOT = checkbox.checked;
+    else state.testamentNT = checkbox.checked;
   });
 });
 
@@ -179,8 +178,8 @@ function renderStaticText() {
   commentaryLabelEl.textContent = s.contextLabel;
   newVerseBtn.textContent = s.randomVerseBtn;
 
-  document.querySelector('[data-testament="OT"]').textContent = s.oldTestament;
-  document.querySelector('[data-testament="NT"]').textContent = s.newTestament;
+  testamentOTLabelEl.textContent = s.oldTestament;
+  testamentNTLabelEl.textContent = s.newTestament;
   document.querySelector('[data-version="OLD"]').textContent = s.old;
   document.querySelector('[data-version="MODERN"]').textContent = s.modern;
 
