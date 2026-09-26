@@ -1,84 +1,84 @@
 {
-  "generatedAt": "2026-09-25T21:00:37.609Z",
+  "generatedAt": "2026-09-26T03:03:52.531Z",
   "entries": {
     "EN_MODERN": [
       {
-        "reference": "Psalms 119:105",
-        "text": "Your word is a lamp to my feet,\nand a light for my path.",
+        "reference": "Job 40:21",
+        "text": "He lies under the lotus trees,\nin the covert of the reed, and the marsh.",
         "translationLabel": "World English Bible",
-        "commentary": "Psalm 119 is an extensive acrostic poem that serves as a meditation on the value, beauty, and practical importance of divine law and scripture in the life of the believer. Within this broader theme of relying on divine instruction for guidance, this specific verse uses the metaphor of a lamp to express how scripture provides direction and clarity for daily living and decision-making."
+        "commentary": "In this chapter, God responds to Job out of the whirlwind, challenging Job's understanding of divine power by pointing to magnificent and untamable creatures of the natural world. This verse is part of a longer description detailing the habitat of the massive creature called Behemoth, depicting it resting peacefully in a marshy, reed-filled environment."
       },
       {
-        "reference": "1 Kings 2:23",
-        "text": "Then king Solomon swore by Yahweh, saying, “God do so to me, and more also, if Adonijah has not spoken this word against his own life.",
+        "reference": "Ezekiel 1:25",
+        "text": "There was a voice above the expanse that was over their heads. When they stood, they let down their wings.",
         "translationLabel": "World English Bible",
-        "commentary": "**Chapter Context**\nIn 1 Kings 2, Solomon secures his throne by eliminating political rivals and consolidating power after the death of his father, David. This chapter details the execution of these succession-related directives, including the punishment of Adonijah and Joab, and the banishment of Abiathar.\n\n**Verse Context**\nIn this verse, Solomon reacts to a request made by Adonijah through Bathsheba to marry Abishag, David's former attendant, viewing it as a treasonous challenge to the throne. Solomon invokes an oath to justify sentencing Adonijah to death, concluding that the request seals his brother's fate."
+        "commentary": "Ezekiel 1 describes the prophet Ezekiel's inaugural vision by the River Chebar, during the Babylonian exile, where he witnesses the glory of God manifested through a divine chariot, strange living creatures, and wheel-like structures. Verse 25 captures a moment within this visionary sequence, noting the sound from above the canopy over the creatures' heads, which prompts them to lower their wings in a posture of stillness and attentiveness."
       },
       {
-        "reference": "Luke 19:9",
-        "text": "Jesus said to him,\n“Today, salvation has come to this house, because he also is a son of Abraham.",
+        "reference": "Acts 16:33",
+        "text": "He took them the same hour of the night, and washed their stripes, and was immediately baptized, he and all his household.",
         "translationLabel": "World English Bible",
-        "commentary": "Luke 19 recounts the journey of Jesus through Jericho, where he encounters a wealthy chief tax collector named Zacchaeus, who climbs a sycamore tree to see Jesus and subsequently resolves to reform his behavior. In this verse, Jesus publicly acknowledges Zacchaeus's repentance and hospitality, declaring that he too belongs to the covenant community of Israel."
+        "commentary": "Chapter 16 of the Book of Acts recounts Paul and Silas's missionary journey through Macedonia, detailing their imprisonment in Philippi following an exorcism, an earthquake that freed them from their chains, and the subsequent conversion of their jailer. Within this narrative, the verse describes the jailer's immediate response of compassion in tending to the apostles' wounds, followed by his formal profession of faith and baptism alongside his family."
       }
     ],
     "EN_OLD": [
       {
-        "reference": "Genesis 8:12",
-        "text": "And he stayed yet other seven days; and sent forth the dove; which returned not again unto him any more.",
+        "reference": "Deuteronomy 22:10",
+        "text": "Thou shalt not plow with an ox and an ass together.",
         "translationLabel": "King James Version",
-        "commentary": "Genesis 8 details the receding of the floodwaters, the resting of Noah's ark on the mountains of Ararat, and Noah's release of birds to test whether the earth has dried. In this context, verse 12 describes Noah sending out the dove for a third time; its failure to return indicates that the floodwaters have finally receded enough for land-dwelling creatures to survive outside the ark."
+        "commentary": "Deuteronomy 22 is part of a larger section in the Book of Deuteronomy detailing various civil, social, and moral regulations for the ancient Israelite community. This specific verse sits among a series of miscellaneous laws regarding property and treatment of animals, prohibiting the pairing of animals with different strengths and temperaments for agricultural work."
       },
       {
-        "reference": "2 Chronicles 20:21",
-        "text": "And when he had consulted with the people, he appointed singers unto the LORD, and that should praise the beauty of holiness, as they went out before the army, and to say, Praise the LORD; for his mercy\nendureth for ever.",
+        "reference": "Proverbs 21:15",
+        "text": "It is joy to the just to do judgment: but destruction\nshall be to the workers of iniquity.",
         "translationLabel": "King James Version",
-        "commentary": "Chapter 20 of 2 Chronicles describes a time when King Jehoshaphat of Judah faced a massive invading alliance of Moabites, Ammonites, and others, prompting him to proclaim a fast and seek divine help. Reassured by a prophetic promise of victory without needing to fight, the king organized the nation in prayer and preparation to confront the threat. \n\nIn this context, verse 21 details how Jehoshaphat consulted the people and uniquely placed a choir of singers at the front of his marching army to praise God. This act demonstrates the narrative's emphasis on relying on religious devotion and divine intervention rather than standard military strategy alone."
+        "commentary": "Proverbs 21 is a collection of short wisdom sayings contrasting moral behavior, righteousness, and the consequences of wicked actions. Within this thematic framework, this verse asserts that righteous individuals find satisfaction in upholding justice, whereas wrongdoers face ruin for their actions."
       },
       {
-        "reference": "Luke 4:34",
-        "text": "Saying, Let\nus alone; what have we to do with thee,\nthou Jesus of Nazareth? art thou come to destroy us? I know thee who thou art; the Holy One of God.",
+        "reference": "Revelation 6:2",
+        "text": "And I saw, and behold a white horse: and he that sat on him had a bow; and a crown was given unto him: and he went forth conquering, and to conquer.",
         "translationLabel": "King James Version",
-        "commentary": "Luke chapter 4 depicts the beginning of Jesus' public ministry, including his temptation in the wilderness, rejection in his hometown of Nazareth, and subsequent healing and teaching ministry in Capernaum. In this verse, an unclean spirit recognizes Jesus and publicly challenges his presence, acknowledging his identity as \"the Holy One of God\" while resisting his authority."
+        "commentary": "Revelation 6 initiates the opening of the first four of seven seals by the Lamb, which unleash symbolic horsemen representing various forms of earthly distress and judgment at the end of age. Within this context, this verse describes the appearance of the first horseman, conventionally associated with conquest or victory, setting into motion the sequence of apocalyptic trials."
       }
     ],
     "NL_OLD": [
       {
-        "reference": "Matthew 15:37",
-        "text": "En zij allen hebben gegeten, en zijn verzadigd geworden; en zij namen het overige der brokken op, twaalve korven vol.",
+        "reference": "Ezekiel 5:7",
+        "text": "Daarom, zo zegt de Heere HEERE, omdat gij vermenigvuldigd zijt boven de heidenen, die rondom u zijn, en niet in Mijn inzettingen hebt gewandeld, en Mijn rechten niet hebt gedaan, en zelfs naar de rechten der heidenen, die rondom u zijn, niet hebt gehandeld;",
         "translationLabel": "Statenvertaling",
-        "commentary": "In Matteüs 15 bevindt Jezus zich in de regio van Dekapolis, waar hij opnieuw een grote menigte voedt door een wonderbaarlijke vermenigvuldiging van broden en vissen (de tweede spijziging). Dit vers beschrijft de afronding van de maaltijd, waarbij iedereen genoeg heeft gegeten en er zelfs een aanzienlijke hoeveelheid overblijft."
+        "commentary": "Ezechiël 5 beschrijft een symbolische handeling van de profeet waarin hij zijn haar scheert en verdeelt om de naderende belegering, verwoesting en straf van Jeruzalem door God aan te kondigen. In vers 7 verklaart God deze straf doordat het volk Israëls zich niet aan Gods wetten heeft gehouden en zelfs slechter heeft gehandeld dan de omliggende volken."
       },
       {
-        "reference": "2 Peter 2:7",
-        "text": "En den rechtvaardigen Lot, vermoeid zijnde door den ongebonden wandel der gruwelijken, heeft hij verlost;",
+        "reference": "Joshua 22:23",
+        "text": "Dat wij ons aan den HEERE zouden ontrouwen, om heden van den HEERE af te wijken, met brandoffer, of met spijsoffer, of met dankoffer te bouwen; dat de HEERE zelf dat zocke!",
         "translationLabel": "Statenvertaling",
-        "commentary": "Het tweede hoofdstuk van 2 Petrus waarschuwt voor valse leraren en immoraliteit, en illustreert aan de hand van historische voorbeelden uit het Oude Testament dat God rechtvaardigen redt en goddelozen straft. Binnen deze context beschrijft dit vers hoe God de rechtvaardige Lot uit Sodom bevrijdde, omdat Lot zwaar te lijden had onder het losbandige gedrag van de inwoners van die stad."
+        "commentary": "In Jozua 22 steden de stammen Ruben, Gad en de halve stam van Manasse een groot altaar aan de oostkant van de Jordaan, wat bij de overige Israëlitische stammen tot grote spanningen en dreigende oorlog leidt vanwege vermeende afval van God. In vers 23 verdedigen de oostelijke stammen zich tegen deze beschuldiging door te bezweren dat het altaar niet bedoeld is om God ontrouw te worden of af te wijken van de eredienst, en roepen zij God zelf op om hen te straffen als dat wel zo zou zijn."
       },
       {
-        "reference": "Lamentations 3:1",
-        "text": "Ik ben de man, die verdrukking ziet door de roede zijns grorms.",
+        "reference": "Revelation 2:13",
+        "text": "Ik ken uw werken, en waar gij woont, namelijk daar de troon des satans is; en gij houdt mijn naam, en hebt mijn geloof niet verlochenend, ook in die dagen, in welke Antipas, mijn getrouwe getuige was, welke gedood is bij lieden, daar satan woont.",
         "translationLabel": "Statenvertaling",
-        "commentary": "In het bijbelboek Klaagliederen wordt de verwoesting van Jeruzalem en het intense lijden van de inwoners na de Babylonische overwuining beschreven. Dit hoofdstuk drukt de diepe persoonlijke en collectieve wanhoop uit, maar brengt halverwege ook een stem van standvastigheid en hoop op Gods ontferming.\n\nIn vers 1 identificeert de spreker zich direct als degene die zwaar lijdt onder de bestraffing of toorn van God. Hiermee verwoordt hij de rauwe werkelijkheid van de vernietiging en de pijn die de gemeenschap ervaart."
+        "commentary": "Dit Bijbelboek bestaat uit visioenen en brieven aan zeven vroege christelijke gemeenten in Klein-Azië, waarin hun geloof en standvastigheid in moeilijke tijden worden aangesproken. Hoofdstuk 2 bevat specifieke lof- en waarschuwingsbrieven voor de gemeenten van Efese, Smyrna, Pergamum en Thyatira.\n\nIn dit specifieke vers prijst de schrijver de gemeente in Pergamum omdat zij trouw blijft aan haar geloof, ondanks de vijandige omgeving en de moord op een geloofsgetuige genaamd Antipas. Het benadrukt de standvastigheid van de gelovigen te midden van vervolging."
       }
     ],
     "NL_MODERN": [
       {
-        "reference": "Matthew 21:5",
-        "text": "Zeg tegen de dochter van Sion:\nKijk, je Koning komt naar je toe,\nzachtmoedig en zittend op een ezel,\nop een veulen, het jong van een jachtdier.",
+        "reference": "Daniel 8:16",
+        "text": "En ik hoorde een menselijke stem over de Ulai roepen: Gabriël, leg hem de visioen uit.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "In Matteüs 21 komt Jezus aan in Jeruzalem aan het begin van de Lijdensweek, waarbij hij de stad binnenrijdt terwijl de menigte hem onthaalt. Dit specifieke vers citeert een oud profetie om te duiden dat Jezus' intocht symbool staat voor de komst van een vreedzame en nederige koning."
+        "commentary": "In Daniël 8 krijgt de profeet Daniël een visioen over toekomstige wereldrijken en conflicten tussen machten, dat zich afspeelt bij de rivier de Ulai. Dit specifieke vers beschrijft het moment waarop een stem van boven de hemelse bode Gabriël op opdracht geeft om Daniël de betekenis van dit visioen te verhelderen."
       },
       {
-        "reference": "2 Corinthians 8:3",
-        "text": "Naar vermogen, dat getuig ik, ja boven vermogen, gaven ze uit eigen beweging,",
+        "reference": "Luke 4:19",
+        "text": "en om een jaar uit te roepen waarin de Heer zijn genade bewijst.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "In 2 Korinthiërs 8 spoort de apostel Paulus de gemeente in Korinthe aan om financieel bij te dragen aan een inzameling voor de arme christenen in Jeruzalem. Hij stelt hierbij het vrijgevige voorbeeld van de gemeentes in Macedonië centraal.\n\nDit vers beschrijft dat de Macedoniërs uit eigen beweging en naar vermogen – en zelfs daarbovenuit – gul gaven voor dit doel. Hiermee benadrukt Paulus hun grote en onverplichte toewijding aan de inzameling."
+        "commentary": "In Lucas 4 leest Jezus in de synagoge in Nazaret voor uit de profeet Jesaja en verklaart Hij dat deze profetie over Hemzelf gaat. Dit specifieke vers verwijst naar de komst van een door God aangekondigde tijd van bevrijding en herstel, die Jezus in zijn optreden zichtbaar maakt."
       },
       {
-        "reference": "1 Corinthians 6:15",
-        "text": "Weten jullie niet dat je lichamen deel uitmaken van Christus? Zou ik dan de leden van Christus mogen nemen en die tot leden van een hoer maken? Dat nooit!",
+        "reference": "Matthew 3:11",
+        "text": "Ik doop jullie met water tot bekering, maar na mij komt iemand die veel sterker is dan ik; ik ben even niet eens waard om zijn sandalen voor hem te dragen. Hij zal jullie dopen met de Heilige Geest.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "In 1 Korinthiërs 6 richt de apostel Paulus zich tot de christelijke gemeente in Korinthe om interne geschillen, rechtbankbezoek en seksuele moraal te bespreken. Hij roept de gelovigen op om hun lichaam te reiniden van zedenloosheid, omdat het lichaam volgens de christelijke leer toebehoort aan God.\n\nIn vers 15 stelt Paulus retorisch dat het fysieke lichaam van een gelovige verbonden is met Christus. Daarom concludeert hij dat het ondenkbaar is om datzelfde lichaam te verenigen met een prostituee."
+        "commentary": "In het derde hoofdstuk van Matteüs treedt Johannes de Doper op in de woestijn van Judea, waar hij mensen oproept tot bekering en hen doopt in de Jordaan terwijl hij de komst van het koninkrijk van de hemel aankondigt. In dit specifieke vers maakt Johannes het onderscheid duidelijk tussen zijn eigen symbolische waterdoop en de superieure, spirituele doop die door de komende Messias zal worden voltrokken."
       }
     ]
   }
