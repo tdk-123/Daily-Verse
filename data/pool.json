@@ -1,66 +1,84 @@
 {
-  "generatedAt": "2026-11-22T23:06:58.307Z",
+  "generatedAt": "2026-11-23T05:15:39.923Z",
   "entries": {
     "EN_MODERN": [
       {
-        "reference": "Romans 9:3",
-        "text": "For I could wish that I myself were accursed from Christ for my brothers’ sake, my relatives according to the flesh,",
+        "reference": "Genesis 46:13",
+        "text": "The sons of Issachar: Tola, Puvah, Iob, and Shimron.",
         "translationLabel": "World English Bible",
-        "commentary": "In Romans 9, the Apostle Paul expresses deep sorrow and anguish over the fact that the majority of his fellow Israelites have not accepted Christian faith. Within this context, verse 3 conveys the intensity of Paul's patriotism and love,"
+        "commentary": "Genesis 46 recounts the migration of Jacob and his entire household into Egypt during a period of famine, joining his son Joseph. This chapter lists the specific names of Jacob's descendants who made the journey to document the foundational lineage of the Israelites."
+      },
+      {
+        "reference": "Revelation 2:8",
+        "text": "“To the angel of the assembly in Smyrna write:\n“The first and the last, who was dead, and has come to life says these things:",
+        "translationLabel": "World English Bible",
+        "commentary": "**Chapter Context**\nRevelation chapter 2 contains letters addressed to the \"angels\" or leaders of four of the seven churches of Asia Minor (Ephesus, Smyrna, Pergamum, and Thyatira). These messages, dictated in the text as coming from Jesus, evaluate the spiritual condition of each congregation, offering specific commendations, criticisms, warnings, and promises based on their local circumstances.\n\n**Verse Context**\nThis verse serves as the formal introduction to the second of these letters, specifically addressed to the Christians in the wealthy port city of Smyrna who were facing severe poverty and persecution. The speaker identifies himself using titles of eternity and resurrection—\"the first and the last, who was dead, and has come to life\"—which are intended to offer reassurance to a congregation enduring suffering and the threat of death."
+      },
+      {
+        "reference": "Isaiah 40:2",
+        "text": "“Speak comfortably to Jerusalem; and call out to her that her warfare is accomplished, that her iniquity is pardoned, that she has received of Yahweh’s hand double for all her sins.”",
+        "translationLabel": "World English Bible",
+        "commentary": "Isaiah 40 marks the beginning of the second major section of the book, shifting in tone from judgment to comfort and announcing the impending end of the Babylonian exile. Within this context of national restoration, the verse represents a divine command to proclaim that Jerusalem's period of punishment and hardship has ended and that its debt has been fully paid."
       }
     ],
     "EN_OLD": [
       {
-        "reference": "John 21:12",
-        "text": "Jesus saith unto them,\nCome\nand dine. And none of the disciples durst ask him, Who art thou? knowing that it was the Lord.",
+        "reference": "Leviticus 11:20",
+        "text": "All fowls that creep, going upon\nall four,\nshall be\n an abomination unto you.",
         "translationLabel": "King James Version",
-        "commentary": "In John 21, the resurrected Jesus appears to a group of his disciples by the Sea of Tiberias while they are fishing, culminating in a meal on the shore and a private conversation with Peter. In this verse, Jesus invites the"
+        "commentary": "Leviticus 11 is part of the biblical legal code detailing dietary laws for the ancient Israelites, specifically distinguishing between animals that are ritually clean and unclean. Within this context, verse 20 specifies that winged insects that walk on all fours are forbidden as ritually impure and prohibited for consumption."
       },
       {
-        "reference": "1 Chronicles 27:16",
-        "text": "Furthermore over the tribes of Israel: the ruler of the Reubenites\nwas Eliezer the son of Zichri: of the Simeonites, Shephatiah the son of Maachah:",
+        "reference": "Isaiah 62:8",
+        "text": "The LORD hath sworn by his right hand, and by the arm of his strength, Surely I will no more give thy corn\nto be meat for thine enemies; and the sons of the stranger shall not drink thy wine, for the which thou hast laboured:",
         "translationLabel": "King James Version",
-        "commentary": "Chapter 27 of 1 Chronicles lists the administrative structure of King David's government, detailing the military commanders, tribal leaders, and officials in charge of his royal properties and treasures. In this context, the verse names the designated tribal leaders appointed to govern the specific tribes of Reuben and Simeon as part of David's organized regional administration."
+        "commentary": "Isaiah 62 is a prophetic poem expressing God's commitment to the future restoration, vindication, and prosperity of Jerusalem and its people. Within this context of national renewal, the verse depicts God taking a solemn oath to protect the city's agricultural harvest from foreign invaders who had previously plundered their labor."
+      },
+      {
+        "reference": "2 Chronicles 28:17",
+        "text": "For again the Edomites had come and smitten Judah, and carried away captives.",
+        "translationLabel": "King James Version",
+        "commentary": "This chapter recounts the reign of King Ahaz of Judah, detailing his military defeats, political alliances, and religious unfaithfulness, which the chronicler attributes to divine punishment. Within this historical context, the verse notes a specific territorial loss, stating that the Edomites launched a renewed attack against Judah and took captives."
       }
     ],
     "NL_OLD": [
       {
-        "reference": "Deuteronomy 32:8",
-        "text": "Doeten de Allerhoogste den volken de erfenis uitdeelde, doeten Hij de kinderen Adams vonder scheidde, heeft Hij de palen der volken gesteld naar het getal der kinderen Israëls.",
+        "reference": "Ecclesiastes 5:13",
+        "text": "Er is een kwade ziekte, die ik gezien heb onder de zon, namelijk rijkdom, behouden van den bezitter tot zijn schade.",
         "translationLabel": "Statenvertaling",
-        "commentary": "Dit hoofdstuk bevat het 'Lied van Mozes', een poëtische toespraak waarin Mozes vlak voor zijn dood terugkijkt op de geschiedenis en de relatie tussen God en het volk Israël memoreert. \n\nDit vers beschrijft hoe de Allerhoogste de grenzen en het grondgebied van alle volken op aarde heeft vastgesteld, met Israël als een centraal uitgangspunt."
+        "commentary": "Prediker is een wijsheidsboek uit het Olde Testament waarin de zin en het nut van het menselijk bestaan worden onderzocht vanuit het perspectief van het aardse leven (\"onder de zon\"). In dit hoofdstuk worden verschillende maatschappelijke en economische misstanden besproken, evenals de beperkingen van rijkdom en menselijke arbeid.\n\nDit vers beschrijft de paradoxale situatie waarin het oppotten of bezitten van rijkdom de eigenaar uiteindelijk geen goed doet, maar juist tot nadeel strekt. Het fungeert als een feitelijke constatering binnen het grotere betoog dat materiële welvaart kwetsbaar is en geen blijvende zekerheid biedt."
       },
       {
-        "reference": "Luke 9:11",
-        "text": "En de scharen dat vernemende, zijn hem aangenomen; en hij ontving hen, en sprak tot hen van het Koninkrijk Gods, en degenen die healing nodig hadden, gezond maakkende.",
+        "reference": "1 Kings 15:17",
+        "text": "Zo opgetrokken Baasa, de koning van Israel, tegen Juda, en bouwde Rama, om niemand te laten uitgaan noch ingaan tot Asa, de koning van Juda.",
         "translationLabel": "Statenvertaling",
-        "commentary": "In Lucas 9 reist Jezus rond in Galilea om zijn boodschap te verkondigen en zijn discipelen te trainen door hen macht te geven om te genezen en te onderwijzen. Dit vers beschrijft specifiek hoe Jezus een grote menigte die hem volgt, gastvrij ontvangt, hen onderwijst over het Koninkrijk van God en zieken geneest."
+        "commentary": "Dit hoofdstuk beschrijft de politieke en militaire conflicten tussen de koninkrijken Israël en Juda, en de regeringsperioden van verschillende vorsten in beide landen. In dit specifieke vers onderneemt de Israëlische koning Baasa een strategische aanval om de grens met Juda te versterken en zo het verkeer van en naar het rivaliserende koninkrijk te blokkeren."
       },
       {
-        "reference": "Leviticus 16:34",
-        "text": "En dit zal ulieden tot een eeuwige inzetting zijn, dat men voor de kinderen Israëls van al hun zonden verzoening doe, eenmaal in het jaar. En men deed, gelijk de HEERE Mozes geboden had.",
+        "reference": "Isaiah 48:17",
+        "text": "Zo zegt de HEERE, uw Verlossder, de Heilige Israëls: Ik ben de HEERE, uw God, Die u leert tot nut, Die u leidt in den weg dien gij gaat.",
         "translationLabel": "Statenvertaling",
-        "commentary": "Dit hoofdstuk uit Leviticus beschrijft de instelling en de voorschriften van de Grote Verzoendag (Jom Kippoer), de jaarlijkse dag waarop de hogepriester rituelen uitvoert om het heiligdom en het volk te reinigen van zonde. Het aangehaalde vers sluit dit hoofdstuk af door te benadrukken dat deze verzoening jaarlijks moet plaatsvinden en dat Mozes de instructies van God hiertoe nauwgezet heeft opgevolgd."
+        "commentary": "Jesaja 48 bevindt zich in een gedeelte dat zich richt tot het Joodse volk in de Babylonische ballingschap, waarin God hen herinnert aan zijn gezag, hun ongehoorzaamheid en de komende bevrijding. In dit specifieke vers benadrukt God dat Hij Israëls leidsman en verlosser is, die hen onderwijst wat goed voor hen is en hen op hun levensweg begeleidt."
       }
     ],
     "NL_MODERN": [
       {
-        "reference": "Psalms 135:17",
-        "text": "Ze hebben o",
+        "reference": "1 Samuel 14:17",
+        "text": "Toen zei Saul tegen de mensen bij zich: Tel nu eens en kijk wie er bij ons ontbreekt. Toen ze hadden geteld, bleek dat Jonathan en zijn wapendrager er niet waren.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "Psalm 135 is een loflied waarin God wordt geprezen als de schepper en de Heer van de geschiedenis, en waarin afgoden worden beschreven als zielloos en machteloos maaksel van mensenhanden. \n\nDit specifieke vers maakt deel uit van een reeks (verzen 15-17) die de blindheid en doofheid van afgoden bespot, waarbij de tekst in jouw fragment abrupt afbreekt (\"Ze hebben o[ren, maar horen niet]\")."
+        "commentary": "In 1 Samuel 14 bevindt koning Saul zich in een gespannen militaire situatie tegen de Filistijnen in Gibea, waarbij het leger kampeert terwijl de vijand zich in de buurtheid ophoudt. Zonder medeweten van Saul zijn zijn zoon Jonathan en diens wapendrager in het geheim het kamp uitgetrokken om de Filistijnse voorpost aan te vallen.\n\nIn dit vers merkt Saul de afwezigheid van zijn zoon en diens wapendrager op nadat hij een theologische raadpleging onderbreekt, wat het begin markeert van de ontdekking dat Jonathan eigenhandig actie heeft ondernomen. Dit moment vormt de feitelijke overgang naar de confrontatie en de verrassende wending in de strijd die daarop volgt."
       },
       {
-        "reference": "Matthew 5:4",
-        "text": "Gelukkig wie treuren,\nwant hun troost zal worden gegeven.",
+        "reference": "1 Samuel 15:30",
+        "text": "Daarop zei hij: Ik heb gezondigd, maar wees alstublieft zo grootmoedig mij nu eer te bewijzen voor de oudsten van mijn volk en voor heel Israël. Ga met mij mee terug, zodat ik de HEER, uw God, kan aanbidden.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "In Matteüs 5 spreekt Jezus de menigte toe vanaf een berg en geeft Hij in de zogenaamde Bergrede een reeks onderwijzingen over het koninkrijk van de hemel en de juiste levenshouding. Dit vers is de tweede van de 'zaligsprekingen', waarin Jezus verschillende groepen mensen omschrijft die door God gezegend worden vanwege hun situatie of houding."
+        "commentary": "In 1 Samuel 15 verliest koning Saul definitief Gods goedkeuring omdat hij diens bevelen rondom de Amalekieten niet volledig heeft opgevolgd, waarna de profeet Samuel hem laat weten dat zijn koningschap hem wordt ontnomen. \n\nIn dit vers smeekt Saul de profeet Samuel om zijn gezicht niet te verliezen tegenover de leiders en het volk, en vraagt hij hem om toch mee te gaan om samen God te aanbidden."
       },
       {
-        "reference": "Deuteronomy 22:26",
-        "text": "Maar de vrouw zullen jullie niets aandoen. Zij heeft geen misdaad begaan waarop de doodstraf staat. Haar zaak is namelijk te vergelijken met iemand die zijn naaste overvalt en doodt;",
+        "reference": "Proverbs 9:9",
+        "text": "Geef raad aan een wijze, en hij wordt nog wijzer; onderricht een rechtvaardige, en hij groeit in kennis.",
         "translationLabel": "Hedendaagse vertaling (AI-vertaald)",
-        "commentary": "Deuteronomium 22 behandelt diverse maatschappelijke, morele en strafrechtelijke wetten binnen de vroege Israëlitische gemeenschap. Dit specifieke vers onderscheidt een situatie van aanranding buiten de stad, waarbij het slachtoffer onschuldig wordt geacht aan een strafbaar feit omdat zij geen weerbaarheid kon bieden."
+        "commentary": "Spreuken 9 is een les over wijsheid, gepersonifieerd als een vrouw die een huis bouwt en mensen uitnodidt voor een feestmaal om het juiste levenspad te kiezen. Binnen deze context van onderricht en morele vorming stelt dit vers feitelijk dat ontvankelijkheid voor correctie en lessen de reeds bestaande wijsheid en kennis van een persoon verder vergroot."
       }
     ]
   }
